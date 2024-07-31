@@ -14,7 +14,7 @@ const JobPostingDetails = ({ jobPosting }) => {
           addSuffix: true,
         })}
       </p>
-      {user && <Link>Apply</Link>}
+      {user && <Link to={"/apply/" + jobPosting._id}>Apply</Link>}
     </div>
   );
 };
