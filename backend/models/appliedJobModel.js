@@ -7,6 +7,7 @@ const appliedJobSchema = new Schema(
     user_id: { type: String, required: true },
     job_history: { type: String, required: true },
     cover_letter: { type: String, required: true },
+    job_id: { type: String, required: true },
   },
   { timestamps: true }
 );

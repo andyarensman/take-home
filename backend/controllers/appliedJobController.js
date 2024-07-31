@@ -31,7 +31,7 @@ const getSingleAppliedJob = async (req, res) => {
 
 // create new applied job
 const createJobApplied = async (req, res) => {
-  const { user_id, job_history, cover_letter } = req.body;
+  const { user_id, job_history, cover_letter, job_id } = req.body;
 
   // add doc to db
   try {
@@ -39,6 +39,7 @@ const createJobApplied = async (req, res) => {
       user_id,
       job_history,
       cover_letter,
+      job_id,
     });
     res.status(200).json(appliedJob);
   } catch (error) {

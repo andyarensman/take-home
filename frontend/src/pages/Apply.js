@@ -1,9 +1,16 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import formatDistanceToNow from "date-fns/formatDistanceToNow";
+import { useJobApply } from "../hooks/useJobApply";
+import { useAuthContext } from "../hooks/useAuthContext";
 
 const Apply = () => {
   const [jobPosting, setJobPosting] = useState(null);
+  const [jobHistory, setJobHistory] = useState("");
+  const [coverLetter, setCoverLetter] = useState("");
+  const { applyForJob, error, isLoading } = useJobApply();
+  const { user } = useAuthContext();
+
   let { id } = useParams();
 
   useEffect(() => {
@@ -17,6 +24,12 @@ const Apply = () => {
     };
     fetchSingleJobPosting();
   });
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    await applyForJob(jobHistory, coverLetter, user.email, id);
+  };
 
   return (
     <div>
@@ -32,12 +45,23 @@ const Apply = () => {
         </div>
       )}
       <h4>Apply Now</h4>
-      <form className="apply-form">
+      <form className="apply-form" onSubmit={handleSubmit}>
         <label>Job History</label>
-        <textarea rows="4" cols="50" />
+        <textarea
+          rows="4"
+          cols="50"
+          onChange={(e) => setJobHistory(e.target.value)}
+          value={jobHistory}
+        />
         <label>Cover Letter</label>
-        <textarea rows="4" cols="50" />
-        <button>Submit</button>
+        <textarea
+          rows="4"
+          cols="50"
+          onChange={(e) => setCoverLetter(e.target.value)}
+          value={coverLetter}
+        />
+        <button disabled={isLoading}>Submit</button>
+        {error && <div className="error">{error}</div>}
       </form>
     </div>
   );
