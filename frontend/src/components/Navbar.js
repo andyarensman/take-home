@@ -19,6 +19,9 @@ const Navbar = () => {
         <nav>
           {user && (
             <div>
+              <Link to="/my-apps">
+                <h2>My Apps</h2>
+              </Link>
               <span>{user.email}</span>
               <button onClick={handleClick}>Log Out</button>
             </div>
