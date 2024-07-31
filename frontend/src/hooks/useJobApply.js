@@ -1,10 +1,12 @@
 import { useState } from "react";
 import { useAuthContext } from "./useAuthContext";
+import { useNavigate } from "react-router-dom";
 
 export const useJobApply = () => {
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(null);
   const { user } = useAuthContext();
+  const navigate = useNavigate();
 
   const applyForJob = async (job_history, cover_letter, job_id) => {
     setIsLoading(true);
@@ -34,6 +36,7 @@ export const useJobApply = () => {
     if (response.ok) {
       console.log(json);
       setIsLoading(false);
+      navigate("/my-apps");
     }
   };
 
