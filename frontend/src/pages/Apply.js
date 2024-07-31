@@ -23,12 +23,12 @@ const Apply = () => {
       }
     };
     fetchSingleJobPosting();
-  });
+  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    await applyForJob(jobHistory, coverLetter, user.email, id);
+    await applyForJob(jobHistory, coverLetter, id);
   };
 
   return (

@@ -7,8 +7,12 @@ const {
   deleteAppliedJob,
   updateAppliedJob,
 } = require("../controllers/appliedJobController");
+const requireAuth = require("../middleware/requireAuth");
 
 const router = express.Router();
+
+//require auth for all applied jobs routes
+router.use(requireAuth);
 
 // GET all applied job postings
 router.get("/", getUsersAppliedJobs);

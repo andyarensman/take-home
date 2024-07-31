@@ -4,6 +4,7 @@ import Navbar from "./components/Navbar";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import Apply from "./pages/Apply";
+import MyApps from "./pages/MyApps";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<Signup />} />
             <Route path="/apply/:id" element={<Apply />} />
+            <Route path="/my-apps" element={<MyApps />} />
           </Routes>
         </div>
       </BrowserRouter>

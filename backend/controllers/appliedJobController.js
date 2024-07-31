@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 
 // get all applied jobs for user
 const getUsersAppliedJobs = async (req, res) => {
-  const { user_id } = req.body;
+  const user_id = req.user._id;
   console.log(user_id);
   const appliedJob = await AppliedJob.find({ user_id }).sort({
     createdAt: -1,
@@ -31,7 +31,8 @@ const getSingleAppliedJob = async (req, res) => {
 
 // create new applied job
 const createJobApplied = async (req, res) => {
-  const { user_id, job_history, cover_letter, job_id } = req.body;
+  const { job_history, cover_letter, job_id } = req.body;
+  const user_id = req.user._id;
 
   // add doc to db
   try {
