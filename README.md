@@ -4,11 +4,10 @@
 
 ### Backend
 
-- (IMPORTANT) Download the .env file I emailed, and add it to the backend folder
-- Open a terminal (ctrl + shift + \`) and navigate to the backend folder: `cd backend`
+- (IMPORTANT) Download the .env file I emailed, and add it to the backend folder. Rename it to `.env`. The dot is important
+- Open a terminal (ctrl + \`) and navigate to the backend folder: `cd backend`
 - Run the following code to install packages: `npm i`
-- Install nodemon: `npm i nodemon -g`
-- Run the backend: `npm run dev`
+- Run the backend: `npm start`
 
 ### Frontend
 
