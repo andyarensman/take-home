@@ -65,3 +65,12 @@ button {
 button {
   width: 100px;
 }
+
+nav {
+  display: flex;
+  align-items: center;
+}
+nav a,
+nav button {
+  margin-left: 10px;
+}
