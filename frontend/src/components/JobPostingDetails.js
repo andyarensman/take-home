@@ -1,6 +1,10 @@
 import formatDistanceToNow from "date-fns/formatDistanceToNow";
+import { Link } from "react-router-dom";
+import { useAuthContext } from "../hooks/useAuthContext";
 
 const JobPostingDetails = ({ jobPosting }) => {
+  const { user } = useAuthContext();
+
   return (
     <div className="job-posting-details">
       <h4>{jobPosting.title}</h4>
@@ -10,6 +14,7 @@ const JobPostingDetails = ({ jobPosting }) => {
           addSuffix: true,
         })}
       </p>
+      {user && <Link>Apply</Link>}
     </div>
   );
 };
